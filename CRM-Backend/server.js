@@ -111,9 +111,17 @@ const seedInitialDataIfNeeded = async () => {
 };
 
 // Connect to Database and start server
-connectDB().then(async () => {
-  await seedInitialDataIfNeeded();
-  app.listen(PORT, () => {
-    console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+if (!process.env.VERCEL) {
+  connectDB().then(async () => {
+    await seedInitialDataIfNeeded();
+    app.listen(PORT, () => {
+      console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+    });
   });
-});
+} else {
+  connectDB().then(async () => {
+    await seedInitialDataIfNeeded();
+  });
+}
+
+module.exports = app;

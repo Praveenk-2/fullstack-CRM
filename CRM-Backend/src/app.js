@@ -10,6 +10,8 @@ const dashboardRoutes = require('./routes/dashboardRoutes');
 
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 
+const connectDB = require('./config/db');
+
 const app = express();
 
 // Middleware
@@ -19,6 +21,21 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Ensure DB connection before processing requests
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (error) {
+    console.error('Database connection failed:', error.message);
+    res.status(500).json({
+      success: false,
+      message: `Database connection failed: ${error.message}. Please ensure MongoDB Atlas Network Access allows 0.0.0.0/0.`
+    });
+  }
+});
+
 
 // Base route check
 app.get('/api/health', (req, res) => {
