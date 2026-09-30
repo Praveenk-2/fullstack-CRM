@@ -20,25 +20,15 @@ const seedData = async () => {
     console.log('Seeding Users...');
     const users = await User.create([
       {
-        name: 'John',
-        email: 'john@example.com',
-        password: 'password123',
-      },
-      {
-        name: 'David',
-        email: 'david@example.com',
-        password: 'password123',
-      },
-      {
         name: 'Admin',
-        email: 'admin@example.com',
-        password: 'password123',
+        email: 'admin@gmail.com',
+        password: '12345',
       },
     ]);
 
-    const john = users.find((u) => u.name === 'John');
-    const david = users.find((u) => u.name === 'David');
-    const admin = users.find((u) => u.name === 'Admin');
+    const admin = users[0];
+    const john = admin;
+    const david = admin;
 
     console.log('Seeding Companies...');
     const companies = await Company.create([
@@ -163,9 +153,7 @@ const seedData = async () => {
     console.log('✅ Database Seeded Successfully!');
     console.log('-----------------------------------');
     console.log('Test Credentials:');
-    console.log('1. John  - Email: john@example.com  | Password: password123');
-    console.log('2. David - Email: david@example.com | Password: password123');
-    console.log('3. Admin - Email: admin@example.com | Password: password123');
+    console.log('Admin - Email: admin@gmail.com | Password: 12345');
     console.log('-----------------------------------');
 
     process.exit(0);

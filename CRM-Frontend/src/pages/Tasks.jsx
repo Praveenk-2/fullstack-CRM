@@ -144,9 +144,9 @@ const Tasks = () => {
         </Button>
       </Box>
 
-      <Alert severity="info" sx={{ mb: 3, borderRadius: 2 }}>
+      {/* <Alert severity="info" sx={{ mb: 3, borderRadius: 2 }}>
         <strong>Mandatory Interview Requirement:</strong> Only the assigned user (Current Logged In: <u>{currentUser?.name}</u>) can update a task status. If a non-assigned user attempts to complete a task, the backend will return a <strong>403 Forbidden</strong> response.
-      </Alert>
+      </Alert> */}
 
       {actionError && <ErrorMessage title="Authorization Rule Violation" message={actionError} />}
       {error && <ErrorMessage message={error} />}

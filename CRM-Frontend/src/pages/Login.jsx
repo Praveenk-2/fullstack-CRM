@@ -146,13 +146,10 @@ const Login = () => {
 
           <Box sx={{ mt: 3, p: 2, bgcolor: '#f8fafc', borderRadius: 2, width: '100%' }}>
             <Typography variant="caption" color="text.secondary" display="block" fontWeight="bold">
-              Test Credentials (Seeded):
+              Test Credentials:
             </Typography>
             <Typography variant="caption" display="block" color="text.secondary">
-              • john@example.com / password123
-            </Typography>
-            <Typography variant="caption" display="block" color="text.secondary">
-              • david@example.com / password123
+              • admin@gmail.com / 12345
             </Typography>
           </Box>
         </Paper>
